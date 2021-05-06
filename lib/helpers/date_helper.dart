@@ -34,4 +34,12 @@ class DateHelper {
 
     return '${dueDate.day}/$month';
   }
+
+  static String dateIsLessOrEqualToday(String date) {
+    final dateSelect = parse(date);
+    if (!dateSelect.isBefore(DateTime.now()))
+      return 'Data de empréstimo deve ser menor ou igual data de hoje';
+
+    return null;
+  }
 }

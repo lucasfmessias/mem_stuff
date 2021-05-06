@@ -42,6 +42,7 @@ class _DateInputFieldState extends State<DateInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: DateHelper.dateIsLessOrEqualToday,
       onSaved: widget.onSaved,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.date_range_outlined),
@@ -60,6 +61,7 @@ class _DateInputFieldState extends State<DateInputField> {
       initialDate: _selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(3000),
+      // lastDate: DateTime.now(),
     );
     print(date);
     if (date != null && date != _selectedDate) {
