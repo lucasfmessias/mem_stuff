@@ -1,10 +1,10 @@
 import 'package:mem_stuff/models/stuff_model.dart';
-import 'package:mem_stuff/repositories/stuff_repository.dart';
+import 'package:mem_stuff/repositories/stuff_repository_impl.dart';
 
 class HomeController {
-  final StuffRepository _repository;
+  final MockStuffRepositoryImpl _repositoryImpl;
 
-  HomeController(this._repository);
+  HomeController(this._repositoryImpl);
 
   List<StuffModel> stuffs = <StuffModel>[];
 
@@ -12,17 +12,17 @@ class HomeController {
 
   Future<void> readAll() async {
     loading = true;
-    stuffs = await _repository.readAll();
+    stuffs = await _repositoryImpl.readAll();
     loading = false;
   }
 
   Future<void> delete(StuffModel stuff) async {
     loading = true;
-    await _repository.delete(stuff);
+    await _repositoryImpl.delete(stuff);
     loading = false;
   }
 
   Future undo(StuffModel stuff) async {
-    await _repository.create(stuff);
+    await _repositoryImpl.create(stuff);
   }
 }

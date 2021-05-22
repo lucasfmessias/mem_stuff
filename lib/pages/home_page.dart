@@ -5,6 +5,8 @@ import 'package:mem_stuff/helpers/snackbar_helper.dart';
 import 'package:mem_stuff/models/stuff_model.dart';
 import 'package:mem_stuff/pages/detail_page.dart';
 import 'package:mem_stuff/repositories/stuff_repository_impl.dart';
+import 'package:mem_stuff/services/calls_and_messages_service.dart';
+import 'package:mem_stuff/services/service_locator.dart';
 import 'package:mem_stuff/widgets/stuff_card.dart';
 import 'package:mem_stuff/widgets/stuff_listview.dart';
 
@@ -15,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController(MockStuffRepositoryImpl());
+  final CallsAndMessagesService _service = locator<CallsAndMessagesService>();
 
   @override
   void initState() {
@@ -33,9 +36,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(kAppTitle),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: _onCreate,
+        label: Text('Empréstimo'),
+        icon: Icon(Icons.add),
       ),
       body: RefreshIndicator(
         onRefresh: _initialize,
@@ -55,6 +59,7 @@ class _HomePageState extends State<HomePage> {
       stuff: stuff,
       onUpdate: () => _onUpdate(stuff),
       onDelete: () => _onDelete(stuff),
+      onCall: () => _onCall(stuff),
     );
   }
 
@@ -89,5 +94,9 @@ class _HomePageState extends State<HomePage> {
   _onDeleteUndo(StuffModel stuff) async {
     await _controller.undo(stuff);
     _initialize();
+  }
+
+  _onCall(StuffModel stuff) {
+    _service.call(number: stuff.phoneNumber);
   }
 }

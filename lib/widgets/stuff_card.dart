@@ -9,12 +9,14 @@ class StuffCard extends StatelessWidget {
   final StuffModel stuff;
   final Function onUpdate;
   final Function onDelete;
+  final Function onCall;
 
   const StuffCard({
     Key key,
     this.stuff,
     this.onUpdate,
     this.onDelete,
+    this.onCall,
   }) : super(key: key);
 
   @override
@@ -24,9 +26,17 @@ class StuffCard extends StatelessWidget {
       actionExtentRatio: 0.25,
       child: _buildCard(),
       actions: <Widget>[
+        stuff.phoneNumber.isNotEmpty
+            ? IconSlideAction(
+                caption: 'Ligar',
+                color: Colors.green,
+                icon: Icons.call,
+                onTap: onCall,
+              )
+            : null,
         IconSlideAction(
           caption: 'Excluir',
-          color: Theme.of(context).accentColor,
+          color: Colors.red,
           icon: Icons.delete,
           onTap: onDelete,
         ),

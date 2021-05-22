@@ -1,17 +1,25 @@
 const kRequireField = 'Campo obrigatório';
-const kInvalidValue = 'Valor inválido';
+const kInvalidNumber = 'Telefone inválido';
 
 class PhoneHelper {
   static String validatePhoneNumber(String phone) {
-    if (phone.isEmpty) {
-      return kRequireField;
-    } else {
+    if (phone.isNotEmpty) {
       bool phoneNumberValid =
           RegExp(r'^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$')
               .hasMatch(phone);
 
-      return phoneNumberValid ? null : 'Telefone inválido';
+      return phoneNumberValid ? null : '$kInvalidNumber';
     }
+    return null;
+    // if (phone.isEmpty) {
+    //   return kRequireField;
+    // } else {
+    //   bool phoneNumberValid =
+    //       RegExp(r'^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$')
+    //           .hasMatch(phone);
+
+    //   return phoneNumberValid ? null : 'Telefone inválido';
+    // }
   }
 }
 

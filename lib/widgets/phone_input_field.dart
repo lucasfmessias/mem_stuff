@@ -26,6 +26,7 @@ class PhoneInputField extends StatelessWidget {
         TelefoneInputFormatter(),
       ],
       validator: PhoneHelper.validatePhoneNumber,
+      keyboardType: TextInputType.number,
       onSaved: onSaved,
       decoration: InputDecoration(
         prefixIcon: Icon(icon),
