@@ -1,5 +1,16 @@
 # mem_stuff
 
+# Aluno 
+Nome: Lucas Fernando Messias
+RA: 0040482021022
+
+# Desafio
+[X]Adicionar um campo TextFormField parar armazenar o telefone para contato (validação de telefone, RegEX e plugin BrasilFields para formatar os campos);
+[X]Validar todos campos do formulário: data de empréstimo deve ser menor ou igual a data de hoje; descrição não pode ser vazio; nome não pode ser vazio; telefone não pode ser vazio e precisa ter a quantidade de números adequada;
+[]Adicionar uma animação na lista de objetos;
+[X]Implementar um tema (cores) personalizadas, incluindo fontes e tamanhos;
+[X]Adicionar um botão no StuffCard ao deslizar para esquerda, para realizar uma ligação para o número de telefone, caso ele exista;
+
 A new Flutter project.
 
 ## Getting Started
