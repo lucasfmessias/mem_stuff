@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _onCreate,
-        label: Text('Empréstimo'),
+        label: Text('EMPRÉSTIMO'),
         icon: Icon(Icons.add),
       ),
       body: RefreshIndicator(

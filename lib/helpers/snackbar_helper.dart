@@ -66,4 +66,13 @@ class SnackbarHelper {
           : null,
     ).show(context);
   }
+
+  static void showNoInfoMessage({BuildContext context, String message}) {
+    _showMessage(
+      context: context,
+      message: message,
+      icon: Icons.info_outline,
+      color: Colors.blueAccent,
+    );
+  }
 }

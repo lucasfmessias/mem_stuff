@@ -25,7 +25,7 @@ class StuffListView extends StatelessWidget {
         child: Text(
           kLabelNoItem,
           style: TextStyle(
-            color: Colors.black26,
+            color: Colors.white70,
           ),
         ),
       );

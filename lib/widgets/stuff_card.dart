@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:mem_stuff/helpers/date_helper.dart';
+import 'package:mem_stuff/helpers/snackbar_helper.dart';
 import 'package:mem_stuff/models/stuff_model.dart';
 
 class StuffCard extends StatelessWidget {
@@ -26,14 +27,19 @@ class StuffCard extends StatelessWidget {
       actionExtentRatio: 0.25,
       child: _buildCard(),
       actions: <Widget>[
-        stuff.phoneNumber.isNotEmpty
-            ? IconSlideAction(
-                caption: 'Ligar',
-                color: Colors.green,
-                icon: Icons.call,
-                onTap: onCall,
-              )
-            : null,
+        IconSlideAction(
+          caption: 'Ligar',
+          color: stuff.phoneNumber.isNotEmpty ? Colors.green : Colors.grey,
+          icon: Icons.call,
+          onTap: stuff.phoneNumber.isNotEmpty
+              ? onCall
+              : () {
+                  SnackbarHelper.showNoInfoMessage(
+                    context: context,
+                    message: 'No phone register',
+                  );
+                },
+        ),
         IconSlideAction(
           caption: 'Excluir',
           color: Colors.red,
